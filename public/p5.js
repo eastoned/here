@@ -11,7 +11,7 @@ function setup(){
 	xPos = random(windowWidth);
 	yPos = random(windowHeight);
 	status = 0;
-	socket = io.connect('http//localhost:3000');
+	socket = io.connect('https://eastoned.github.io/here/');
 	socket.on('state', newState);
 	var data = {
 		value: status,
