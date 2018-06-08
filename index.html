@@ -1,12 +1,6 @@
 <DOCTYPE HTML>
 <html>
 	<head>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.min.js"></script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
-    	
-    	<script src="../node_modules/socket.io/lib/socket.js"></script>
     	<style>
     		h1{
     			
@@ -15,6 +9,7 @@
     			font-family:courier;
     			border: none;
     			font-size: 30px;
+
     		}
     		h2{
     			color: #834b87;
@@ -72,60 +67,30 @@
     	</style>
 	</head>
 	<body>
+		
 		<h1 id="body">I am
 			<div class="dropdown">
 				<button onclick="myFunction()" class="dropbtn" id="buttonName"><h1>______</h1></button>
 					<div id="myDropdown" class="dropdown-content">
-					    <p onclick="present()">here</p>
-					    <p onclick="ally()">with you</p>
+						<form method="POST" action="variable.php" id="form">
+					    <p value="here" onclick="enter('I am here. ')">here</p>
+					    <p value="with you" onclick="enter('I am with you. ')">with you</p>
+					    <input style="visibility: hidden;" name="info" value="">
+					    </form>
 					</div>
 			</div>.</h1>
+
 	</body>
 	<script>
-		function present(){
-			document.getElementById("myDropdown").classList.toggle("show");
-			document.getElementById("body").innerHTML = "";
-			var obj = document.createElement("h1");
-			var text = document.createTextNode(" I am here.");
-			obj.appendChild(text);
-			document.getElementById("body").appendChild(obj);
-			date();
-		}
-
-		function ally(){
-			document.getElementById("myDropdown").classList.toggle("show");
-			document.getElementById("body").innerHTML = "";
-			var obj = document.createElement("h1");
-			var text = document.createTextNode(" I am with you.");
-			obj.appendChild(text);
-			document.getElementById("body").appendChild(obj);
-			date();
-		}
-
-		function date(){
+		function enter(){
 			var d = new Date();
-			document.getElementById("body").innerHTML += " <h2>" + d + "</h2>";
+			document.getElementById("form").elements[0].value = arguments[0];
+			document.getElementById("form").submit();
 		}
 
 		function myFunction() {
 		    document.getElementById("myDropdown").classList.toggle("show");
 		}
 
-// Close the dropdown if the user clicks outside of it
-/*window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-*/
 	</script>
-	<!--<script src="p5.js"></script>-->
 </html>
