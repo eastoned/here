@@ -24,9 +24,9 @@
 		<?php 
 			$_myFile = "logins.txt";
 			
-			$state = $_GET["info"];
+			$state = $_POST["info"];
 			
-			$date = $_GET["date"];
+			$date = $_POST["date"];
 
 			$handle = fopen($_myFile, 'a');
 			
