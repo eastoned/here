@@ -1,49 +1,54 @@
 <DOCTYPE HTML>
 <html>
 	<head>
+		<meta http-equiv="refresh" content=".1">
     	<style>
-    		h1{
-    			
-    			color: #834b87;
-    			background-color: white;
-    			font-family:courier;
-    			border: none;
-    			font-size: 30px;
-    			white-space: nowrap;
-    		}
-    		h2{
-    			color: #834b87;
-    			background-color: white;
-    			font-family:courier;
-    			border: none;
-    			font-size: 15px;
-    		}
+    		@font-face{
+				font-family: fancy;
+    			src: url(font.ttf);
+			}
 
-    		p{
-    			color: #834b87;
-    			font-size: 30px;
+    		h1{
+    			letter-spacing: 3px;
+    			font-family: fancy;
+    			color: #160d1c;
+    			background-color: white;
+    			border: none;
+    			font-size: 70px;
     		}
 
     	</style>
 	</head>
 	<body>
 
+		<?php 
+			$_myFile = "logins.txt";
+			
+			$state = $_POST["info"];
+			
+			$date = $_POST["date"];
+
+			$handle = fopen($_myFile, 'a');
+			
+			fwrite($handle, $state);
+			fclose($handle);
+
+			$entry = $date;
+			$handle = fopen($_myFile, 'a');
+			if($entry != 0){
+				fwrite($handle, "<span style='color: #f5f2f7;'>");
+				fwrite($handle, $entry);
+				fwrite($handle, "</span>");
+			}
+			fclose($handle);
+		?>
+
 		<h1>
 		<?php
-			$_myFile = "logins.txt";
-			echo $_POST["info"];
 			$_ourHandle = fopen($_myFile, 'r');
 			echo fread($_ourHandle, filesize("logins.txt"));
 			fclose($_ourHandle);
 		?>
 		</h1>
-
-		<?php 
-			$handle = fopen($_myFile, 'a');
-			$entry = $_POST["info"];
-			fwrite($handle, $entry);
-			fclose($handle);
-		?>		
-			
 	</body>
 </html>
